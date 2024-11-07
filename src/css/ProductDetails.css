@@ -1,0 +1,41 @@
+.container{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .img{
+        margin-right: 40px;
+    }
+    .description{
+        font-size: 20px;
+    }
+    .price{
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .total{
+        display: flex;
+        align-items: center;
+    }
+    .totalProduct{
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .numberTotal{
+        font-size: 25px;
+        margin: 0px 10px;
+    }
+    .addBasket{
+        margin-top: 25px;
+        border: none;
+        padding: 10px;
+        background-color: grey;
+        border-radius: 5px;
+    }
+    .addBasket:hover{
+        background-color: green;
+        color: white;
+        cursor: pointer;
+    }
+    
+}

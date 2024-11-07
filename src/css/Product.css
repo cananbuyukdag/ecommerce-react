@@ -1,0 +1,30 @@
+.image{
+    width: 150px;
+    height: 250px;
+}
+.card{
+    width: 340px;
+    height: 440px;
+    box-shadow: 1px 4px 3px lightgray;
+    border-radius: 10px;
+    margin: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.card:hover{
+    box-shadow: 1px 4px 3px rgb(116, 115, 115);
+    transition: all 0.6;
+    cursor: pointer;
+}
+.productInfo{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: lightgrey;
+}
+.productInfo:hover{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
