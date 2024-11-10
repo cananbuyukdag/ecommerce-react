@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../css/ProductDetails.css'
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
 import { useState } from 'react';
+import { setSelectedProduct } from '../redux/slices/productSlice';
+import { addToBasket, calculateBasket } from '../redux/slices/basketSlice';
 
 
 function ProductDetails() {
@@ -12,7 +14,20 @@ function ProductDetails() {
     const product = useSelector((store) =>
         store.product.products.find((product) => product.id === Number(id))
     );
-
+    const { price, image, title, description } = product
+    const dispatch = useDispatch();
+    const addBasket = () => {
+        const payload = {
+            id,
+            price,
+            image,
+            title,
+            description,
+            count
+        }
+        dispatch(addToBasket(payload));
+        dispatch(calculateBasket());
+    }
     const increment = () => {
         setCount(count + 1)
     }
@@ -38,7 +53,7 @@ function ProductDetails() {
                     <CiCirclePlus className='totalProduct' onClick={increment} />
                 </div>
                 <div>
-                    <button className='addBasket'>Sepete Ekle</button>
+                    <button className='addBasket' onClick={addBasket}>Sepete Ekle</button>
                 </div>
 
             </div>

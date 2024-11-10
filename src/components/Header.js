@@ -6,12 +6,17 @@ import { CiSearch } from "react-icons/ci";
 import { MdLightMode } from "react-icons/md";
 import { FaMoon } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import Badge from '@mui/material/Badge';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDrawer } from '../redux/slices/basketSlice';
 
 
 function Header() {
 
     const [theme, setTheme] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { products } = useSelector((store) => store.basket)
     const changeTheme = () => {
         const root = document.getElementById("root");
         setTheme(!theme);
@@ -34,9 +39,10 @@ function Header() {
                 <CiSearch />
                 <input className='search-input' type='text' placeholder='Mağazada Ara...' />
                 <div>
-                    <BsBasket className='icon' />
                     {theme ? <FaMoon className='icon' onClick={changeTheme} /> : <MdLightMode className='icon' onClick={changeTheme} />}
-                    {/* <FaMoon className='icon' /> */}
+                    <Badge onClick={() => dispatch(setDrawer())} badgeContent={products.length} color="error" className='badge'>
+                        <BsBasket className='icon-basket' />
+                    </Badge>
                 </div>
             </div>
         </div>
